@@ -41,5 +41,4 @@ t_coord	*get_player_pos(char **map)
 void	game(t_conf *conf)
 {
 	conf->player_pos = get_player_pos(conf->map);
-	return ;
 }

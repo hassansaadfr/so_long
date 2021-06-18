@@ -2,8 +2,10 @@ NAME			=	so_long
 
 SRCS			=	main.c \
 					parser.c \
+					parser_utils.c \
 					error.c \
 					engine.c \
+					utils.c \
 
 OBJS			=	${addprefix srcs/,${SRCS:.c=.o}}
 

@@ -7,6 +7,7 @@
 # define NOT_CLOSED "The map is closed."
 # define MISSING_PLAYER_POS "Can't find player position in the map."
 # define MULTIPLE_PLAYER_POS "Found multiple player position in the map."
+# define INVALID_CHARACTER "Map contain invalid character."
 
 # define AVAILABLE 0
 # define EATEN 1
