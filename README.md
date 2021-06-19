@@ -1,6 +1,6 @@
 # So_long
 
-![Norminette](https://github.com/hassansaadfr/minishell/workflows/norminette3/badge.svg)
+![Norminette](https://github.com/hassansaadfr/so_long/workflows/norminette3/badge.svg)
 
 As a graphic design project, so long will enable you to improve your skills in these
 areas: windows, colors, events, textures, etc.
