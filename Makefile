@@ -6,6 +6,11 @@ SRCS			=	main.c \
 					error.c \
 					engine.c \
 					utils.c \
+					window.c \
+					window_utils.c \
+					hooks.c \
+					cube_utils.c \
+					draw_utils.c \
 
 OBJS			=	${addprefix srcs/,${SRCS:.c=.o}}
 
@@ -13,7 +18,7 @@ LD_FLAGS		=	-L libft -L mlx
 
 MLX_FLAGS		=	-lm -lmlx -lXext -lX11
 
-HEAD			=	-I includes -I libft
+HEAD			=	-I includes -I libft -I mlx
 
 CC				=	clang
 

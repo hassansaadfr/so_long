@@ -1,47 +1,72 @@
 #include "so_long.h"
 
-int	open_map(char *path)
+static t_list	*init_item_node(int x, int y, int type)
 {
-	int		fd;
-	char	*ext;
+	t_list	*node;
+	t_item	*item;
+	t_coord	*pos;
 
-	fd = -1;
-	errno = 0;
-	ext = ft_strrchr(path, '.');
-	if (ft_strcmp(".ber", ext) != 0)
-	{
-		print_err(NOT_VALID_FILE);
-		ft_exit_free(1);
-	}
-	fd = open(path, O_RDONLY);
-	if (errno != 0 || fd == -1)
-	{
-		print_err(strerror(errno));
-		ft_exit_free(1);
-	}
-	return (fd);
+	item = ft_alloc(sizeof(t_item));
+	pos = ft_alloc(sizeof(t_coord));
+	pos->x = x;
+	pos->y = y;
+	item->item_pos = pos;
+	item->type = type;
+	node = ft_lstnew(item);
+	return (node);
 }
 
-char	**lst_to_arr(t_list *lst)
+void	get_player_pos(char **map, t_coord *player_pos)
 {
-	t_list	**tmp;
-	char	**arr;
-	int		size;
-	int		i;
+	t_coord	pos;
+	int		found;
 
-	i = 0;
-	tmp = &lst;
-	size = ft_lstsize(lst);
-	arr = NULL;
-	arr = ft_alloc(sizeof(char *) * (size + 1));
-	while (lst)
+	pos.x = 0;
+	pos.y = 0;
+	found = 0;
+	while (map[pos.y])
 	{
-		arr[i++] = ft_strdup(lst->content);
-		lst = lst->next;
+		while (map[pos.y][pos.x])
+		{
+			if (map[pos.y][pos.x] == 'P')
+			{
+				found++;
+				player_pos->x = pos.x;
+				player_pos->y = pos.y;
+			}
+			pos.x++;
+		}
+		pos.x = 0;
+		pos.y++;
 	}
-	arr[i] = NULL;
-	ft_lstclear(tmp, NULL);
-	return (arr);
+	if (found == 0)
+		ft_exit_free(print_err(MISSING_PLAYER_POS));
+	else if (found > 1)
+		ft_exit_free(print_err(MULTIPLE_PLAYER_POS));
+}
+
+void	get_items_pos(t_conf *conf)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while (conf->map[y])
+	{
+		while (conf->map[y][x])
+		{
+			if (conf->map[y][x] == 'C')
+				ft_lstadd_back(&conf->item_list,
+					init_item_node(x, y, COLLECTIBLE));
+			else if (conf->map[y][x] == 'E')
+				ft_lstadd_back(&conf->exit_list,
+					init_item_node(x, y, EXIT_GATE));
+			x++;
+		}
+		x = 0;
+		y++;
+	}
 }
 
 char	**parse(char *path)
@@ -53,7 +78,7 @@ char	**parse(char *path)
 
 	map = 0;
 	line = NULL;
-	fd = open_map(path);
+	fd = open_file(path);
 	ret_gnl = 1;
 	while (ret_gnl > 0)
 	{
