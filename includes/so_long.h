@@ -70,4 +70,12 @@ void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 */
 int		get_cube_size(t_coord res, char **map);
 
+/*
+** FILE - move_player.c
+*/
+void	move_north(t_conf *conf);
+void	move_south(t_conf *conf);
+void	move_east(t_conf *conf);
+void	move_west(t_conf *conf);
+
 #endif

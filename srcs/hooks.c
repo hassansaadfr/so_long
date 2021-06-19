@@ -57,14 +57,13 @@ int	keyrelease(int keycode, t_conf *conf)
 
 int	loop_hook(t_conf *conf)
 {
-	(void)conf;
-	// if (conf->keys.north)
-	// 	move_north(conf);
-	// if (conf->keys.south)
-	// 	move_south(conf);
-	// if (conf->keys.east)
-	// 	move_east(conf);
-	// if (conf->keys.west)
-	// 	move_west(conf);
+	if (conf->keys.north)
+		move_north(conf);
+	if (conf->keys.south)
+		move_south(conf);
+	if (conf->keys.east)
+		move_east(conf);
+	if (conf->keys.west)
+		move_west(conf);
 	return (1);
 }

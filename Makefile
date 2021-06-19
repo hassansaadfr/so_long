@@ -11,6 +11,7 @@ SRCS			=	main.c \
 					hooks.c \
 					cube_utils.c \
 					draw_utils.c \
+					move_player.c \
 
 OBJS			=	${addprefix srcs/,${SRCS:.c=.o}}
 
