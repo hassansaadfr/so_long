@@ -46,5 +46,4 @@ void	init_window(t_conf *conf)
 	init_hooks(conf);
 	conf->cube_size = get_cube_size(conf->screen_res, conf->map);
 	mlx_loop_hook(conf->mlx, loop_hook, conf);
-	mlx_loop(conf->mlx);
 }

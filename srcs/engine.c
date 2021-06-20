@@ -15,4 +15,5 @@ void	game(t_conf *conf)
 {
 	extract_positions(conf);
 	init_window(conf);
+	mlx_loop(conf->mlx);
 }
