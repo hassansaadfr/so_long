@@ -3,7 +3,7 @@
 static void	write_move(t_conf *conf, char *str)
 {
 	(void)conf;
-	ft_putstr_fd(str, STDOUT_FILENO);
+	ft_putendl_fd(str, STDOUT_FILENO);
 }
 
 void	move_north(t_conf *conf)

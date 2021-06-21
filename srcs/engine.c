@@ -22,7 +22,7 @@ void	draw_frame(t_conf *conf)
 	{
 		while (conf->map[y][x])
 		{
-			draw_cube(conf, x * conf->cube_size, y * conf->cube_size);
+			draw_cube(conf, x, y);
 			x++;
 		}
 		x = 0;

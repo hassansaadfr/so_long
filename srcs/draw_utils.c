@@ -24,60 +24,46 @@ int	my_mlx_pixel_get(t_tex t, int x, int y)
 	return (color);
 }
 
-static int	get_sprite_color(t_tex *tex, int x, int y, int cubesize)
+static char	*get_sprite_color(t_tex *tex, int x, int y, int cubesize)
 {
-	int		x_pos_percent;
-	int		y_pos_percent;
-	int		x_pos_px;
-	int		y_pos_px;
-	int		color;
+	int		txt_x;
+	int		txt_y;
+	char	*color;
 
-	color = 0;
-	x_pos_percent = 0;
-	y_pos_percent = 0;
-	x_pos_px = 0;
-	y_pos_px = 0;
-	x_pos_percent = (x * 100) / cubesize;
-	y_pos_percent = (y * 100) / cubesize;
-	x_pos_px = (x_pos_percent * cubesize) / 100;
-	y_pos_px = (x_pos_percent * cubesize) / 100;
-	color = my_mlx_pixel_get(*tex, x_pos_px, y_pos_px);
+	txt_x = 0;
+	txt_y = 0;
+	txt_x = tex->width / (100 / (((double)x / cubesize) * 100.0));
+	txt_y = tex->height / (100 / (((double)y / cubesize) * 100.0));
+	color = tex->addr + ((4 * tex->width * txt_y) + (4 * txt_x));
 	return (color);
 }
+
 
 void	draw_cube(t_conf *conf, int startx, int starty)
 {
 	int		x;
 	int		y;
-	int		color;
+	char	*color;
 	t_tex	*tex;
 
-	x = startx;
-	y = starty;
-	tex = choose_texture(conf, '0');
-	while (x < startx + conf->cube_size)
+	tex = choose_texture(conf, conf->map[starty][startx]);
+	y = 0;
+	while (y < conf->cube_size)
 	{
-		while (y < starty + conf->cube_size)
+		x = 0;
+		while (x < conf->cube_size)
 		{
-			if (tex != NULL)
+			if (tex)
 				color = get_sprite_color(tex, x, y, conf->cube_size);
-			else
-				color = 0xff0000;
-			my_mlx_pixel_put(&conf->img, x, y, color);
+			if (color != NULL)
+			{
+				if (*(unsigned int *)color != 0xff0000)
+					my_mlx_pixel_put(&conf->img, (startx * conf->cube_size) + x, (starty * conf->cube_size) + y, *(unsigned int *)color);
+				else
+					my_mlx_pixel_put(&conf->img, (startx * conf->cube_size) + x, (starty * conf->cube_size) + y, 0xffff);
+			}
+			x++;
 		}
-		y = starty;
-		x++;
+		y++;
 	}
 }
-
-// int	get_sprite_pixel(t_tex t, int texture_w, t_coord offset)
-// {
-// 	int color;
-// 	int *int_addr;
-
-// 	int_addr = (int*)t.addr;
-// 	if (offset.x < 0)
-// 		offset.x = 0;
-// 	color = int_addr[(texture_w * offset.y) + offset.x];
-// 	return (color);
-// }
