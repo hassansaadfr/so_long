@@ -39,6 +39,7 @@ void	game(t_conf *conf);
 size_t	get_arrsize(char **arr);
 int		open_file(char *path);
 char	**lst_to_arr(t_list *lst);
+t_tex	*choose_texture(t_conf *conf, char c);
 
 /*
 ** FILE - hooks.c
@@ -64,6 +65,7 @@ void	get_screen_size(void *mlx, int *x, int *y);
 */
 void	ft_draw_img(t_conf *conf, int x, int y);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+void	draw_cube(t_conf *conf, int startx, int starty);
 
 /*
 ** FILE - cube_utils.c

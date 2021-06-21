@@ -11,9 +11,30 @@ static void	extract_positions(t_conf *conf)
 		ft_exit_free(print_err(NO_EXIT_GATE));
 }
 
+void	draw_frame(t_conf *conf)
+{
+	int		x;
+	int		y;
+
+	x = 0;
+	y = 0;
+	while (conf->map[y])
+	{
+		while (conf->map[y][x])
+		{
+			draw_cube(conf, x * conf->cube_size, y * conf->cube_size);
+			x++;
+		}
+		x = 0;
+		y++;
+	}
+}
+
 void	game(t_conf *conf)
 {
 	extract_positions(conf);
 	init_window(conf);
+	draw_frame(conf);
+	ft_draw_img(conf, 0, 0);
 	mlx_loop(conf->mlx);
 }

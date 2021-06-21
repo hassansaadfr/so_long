@@ -53,3 +53,18 @@ char	**lst_to_arr(t_list *lst)
 	ft_lstclear(tmp, NULL);
 	return (arr);
 }
+
+t_tex	*choose_texture(t_conf *conf, char c)
+{
+	if (c == 'P')
+		return (&conf->avatar);
+	if (c == 'E')
+		return (&conf->door);
+	if (c == 'C')
+		return (&conf->item);
+	if (c == '1')
+		return (&conf->wall);
+	if (c == '0')
+		return (NULL);
+	return (NULL);
+}
