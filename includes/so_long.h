@@ -32,6 +32,7 @@ void	is_correct_map(char **map);
 ** FILE - engine.c
 */
 void	game(t_conf *conf);
+void	draw_frame(t_conf *conf);
 
 /*
 ** FILE - utils.c
@@ -45,10 +46,7 @@ t_tex	*choose_texture(t_conf *conf, char c);
 ** FILE - hooks.c
 */
 int		exit_game(t_conf *vars);
-int		focus_window(t_conf *vars);
 int		keypress(int keycode, t_conf *vars);
-int		keyrelease(int keycode, t_conf *vars);
-int		loop_hook(t_conf *v);
 
 /*
 ** FILE - window.c
@@ -66,6 +64,8 @@ void	get_screen_size(void *mlx, int *x, int *y);
 void	ft_draw_img(t_conf *conf, int x, int y);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
 void	draw_cube(t_conf *conf, int startx, int starty);
+int		color_trans(t_tex *tex, char *color);
+char	*get_sprite_color(t_tex *tex, int x, int y, int cubesize);
 
 /*
 ** FILE - cube_utils.c
@@ -77,7 +77,6 @@ int		get_cube_size(t_coord res, char **map);
 */
 void	move_north(t_conf *conf);
 void	move_south(t_conf *conf);
-void	move_east(t_conf *conf);
-void	move_west(t_conf *conf);
+void	move_side(t_conf *conf, int side);
 
 #endif

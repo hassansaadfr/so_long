@@ -10,6 +10,8 @@
 # define INVALID_CHARACTER "Map contain invalid character."
 # define NO_EXIT_GATE "Map does not contain exit gate."
 
+# define FONT "-sony-*-*-*-*-*-24-*-*-*-*-*-*-*"
+
 # define AVAILABLE 0
 # define EATEN 1
 

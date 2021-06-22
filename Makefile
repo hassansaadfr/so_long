@@ -36,6 +36,8 @@ $(NAME)			:	compile ${OBJS} done
 
 all				:	${NAME}
 
+bonus			:	$(NAME)
+
 val				:	${NAME}
 					valgrind \
 					--leak-check=full --tool=memcheck \

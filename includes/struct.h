@@ -40,6 +40,7 @@ typedef struct s_img {
 
 typedef struct s_conf {
 	char	**map;
+	int		move_count;
 	t_coord	*player_pos;
 	t_list	*item_list;
 	t_list	*exit_list;

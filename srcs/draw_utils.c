@@ -13,18 +13,17 @@ void	ft_draw_img(t_conf *conf, int x, int y)
 	mlx_put_image_to_window(conf->mlx, conf->win, conf->img.img, x, y);
 }
 
-
 int	my_mlx_pixel_get(t_tex t, int x, int y)
 {
-	int color;
-	int *int_addr;
+	int	color;
+	int	*int_addr;
 
-	int_addr = (int*)t.addr;
+	int_addr = (int *)t.addr;
 	color = int_addr[y * t.width + (x * t.width)];
 	return (color);
 }
 
-static char	*get_sprite_color(t_tex *tex, int x, int y, int cubesize)
+char	*get_sprite_color(t_tex *tex, int x, int y, int cubesize)
 {
 	int		txt_x;
 	int		txt_y;
@@ -38,32 +37,19 @@ static char	*get_sprite_color(t_tex *tex, int x, int y, int cubesize)
 	return (color);
 }
 
-
-void	draw_cube(t_conf *conf, int startx, int starty)
+int	color_trans(t_tex *tex, char *color)
 {
-	int		x;
-	int		y;
-	char	*color;
-	t_tex	*tex;
+	int		transparancy;
+	int		actual;
+	int		background;
 
-	tex = choose_texture(conf, conf->map[starty][startx]);
-	y = 0;
-	while (y < conf->cube_size)
-	{
-		x = 0;
-		while (x < conf->cube_size)
-		{
-			if (tex)
-				color = get_sprite_color(tex, x, y, conf->cube_size);
-			if (color != NULL)
-			{
-				if (*(unsigned int *)color != 0xff0000)
-					my_mlx_pixel_put(&conf->img, (startx * conf->cube_size) + x, (starty * conf->cube_size) + y, *(unsigned int *)color);
-				else
-					my_mlx_pixel_put(&conf->img, (startx * conf->cube_size) + x, (starty * conf->cube_size) + y, 0xffff);
-			}
-			x++;
-		}
-		y++;
-	}
+	background = 0xFFFFFF;
+	if (!tex)
+		return (background);
+	transparancy = my_mlx_pixel_get(*tex, 0, 0);
+	actual = *(int *)color;
+	if (actual == transparancy)
+		return (background);
+	else
+		return (actual);
 }
