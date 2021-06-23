@@ -3,10 +3,6 @@
 		"*.c": "c",
 		"*.ts": "typescript",
 		"so_long.h": "c",
-		"stat.h": "c",
-		"struct.h": "c",
-		"constant.h": "c",
-		"libft.h": "c",
-		"mlx_int.h": "c"
+		"constant.h": "c"
 	}
 }

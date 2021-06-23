@@ -18,14 +18,9 @@ static void	load_all_textures(t_conf **conf)
 void	init_window(t_conf *conf)
 {
 	conf->mlx = mlx_init();
-	get_screen_size(conf->mlx, &conf->screen_res.x, &conf->screen_res.y);
-	conf->win = mlx_new_window(conf->mlx,
-			conf->screen_res.x, conf->screen_res.y, "so_long");
-	conf->img.img = mlx_new_image(conf->mlx,
-			conf->screen_res.x, conf->screen_res.y);
+	open_window(conf);
 	conf->img.addr = mlx_get_data_addr(conf->img.img, &conf->img.bits_per_pixel,
 			&conf->img.line_length, &conf->img.endian);
 	load_all_textures(&conf);
 	mlx_key_hook(conf->win, keypress, conf);
-	conf->cube_size = get_cube_size(conf->screen_res, conf->map);
 }

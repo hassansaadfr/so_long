@@ -8,6 +8,7 @@ SRCS			=	main.c \
 					utils.c \
 					window.c \
 					window_utils.c \
+					game_utils.c \
 					hooks.c \
 					cube_utils.c \
 					draw_utils.c \

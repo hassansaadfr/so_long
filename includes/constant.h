@@ -12,6 +12,8 @@
 # define INVALID_CHARACTER "Map contain invalid character."
 # define NO_EXIT_GATE "Map does not contain exit gate."
 
+# define CANT_EXIT "Cant exit because you dont collect all collectibles"
+
 # define FONT "-sony-*-*-*-*-*-24-*-*-*-*-*-*-*"
 
 # define AVAILABLE 0

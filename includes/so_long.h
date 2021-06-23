@@ -56,7 +56,7 @@ void	init_window(t_conf *conf);
 /*
 ** FILE - window_utils.c
 */
-void	get_screen_size(void *mlx, int *x, int *y);
+void	open_window(t_conf *conf);
 
 /*
 ** FILE - draw_utils.c
@@ -71,6 +71,12 @@ char	*get_sprite_color(t_tex *tex, int x, int y, int cubesize);
 ** FILE - cube_utils.c
 */
 int		get_cube_size(t_coord res, char **map);
+
+/*
+** FILE - game_utils.c
+*/
+void	delete_item(t_conf *conf, t_coord next);
+int		is_valid_position(t_conf *conf, t_coord next);
 
 /*
 ** FILE - move_player.c

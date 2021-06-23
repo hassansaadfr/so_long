@@ -7,10 +7,16 @@
 		{
 			"type": "lldb",
 			"request": "launch",
-			"name": "Debug",
+			"name": "launch",
 			"program": "${workspaceFolder}/so_long",
 			"args": ["maps/basic.ber"],
 			"cwd": "${workspaceFolder}"
+		},
+		{
+			"type": "lldb",
+			"request": "attach",
+			"name": "attach",
+			"program": "${workspaceFolder}/so_long",
 		}
 	]
 }
