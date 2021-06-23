@@ -19,13 +19,10 @@ int	keypress(int keycode, t_conf *conf)
 {
 	if (keycode == ESCAPE)
 		exit_game(conf);
-	if (keycode == W || keycode == UP)
-		move_north(conf);
-	if (keycode == S || keycode == DOWN)
-		move_south(conf);
-	if (keycode == A || keycode == RIGHT)
-		move_side(conf, RIGHT);
-	if (keycode == D || keycode == LEFT)
-		move_side(conf, LEFT);
+	if (keycode == UP || keycode == DOWN
+		|| keycode == LEFT || keycode == RIGHT
+		|| keycode == W || keycode == S
+		|| keycode == A || keycode == D)
+		move_player(conf, keycode);
 	return (keycode);
 }
