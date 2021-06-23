@@ -4,6 +4,7 @@
 		"*.ts": "typescript",
 		"so_long.h": "c",
 		"constant.h": "c",
-		"struct.h": "c"
+		"struct.h": "c",
+		"so_long_bonus.h": "c"
 	}
 }
