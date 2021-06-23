@@ -1,25 +1,17 @@
 #include "so_long.h"
 
-static void	free_item(void *ptr)
-{
-	t_item	*node;
-
-	node = ptr;
-	ft_free_ptr((void **)&node->item_pos);
-}
-
 void	delete_item(t_conf *conf, t_coord next)
 {
 	t_list	**tmp;
 	t_item	*node;
 
 	tmp = &conf->item_list;
-	while (tmp)
+	while (*tmp)
 	{
 		node = (*tmp)->content;
-		if (node->item_pos->x == next.x && node->item_pos->y == next.y)
+		if (node->item_pos.x == next.x && node->item_pos.y == next.y)
 		{
-			ft_lstdelone(tmp, free_item);
+			ft_lstdelone(tmp, NULL);
 			return ;
 		}
 		*tmp = (*tmp)->next;

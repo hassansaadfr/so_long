@@ -54,7 +54,10 @@ void	move(t_conf *conf, t_coord next, char *str)
 			|| conf->map[next.y][next.x] == 'C')
 		{
 			if (conf->map[next.y][next.x] == 'C')
+			{
+				printf("%p addr\n", conf->item_list);
 				delete_item(conf, next);
+			}
 			conf->map[next.y][next.x] = 'P';
 			conf->map[conf->player_pos->y][conf->player_pos->x] = '0';
 			conf->player_pos->x = next.x;

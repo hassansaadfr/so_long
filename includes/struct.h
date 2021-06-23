@@ -7,7 +7,7 @@ typedef struct s_coord {
 }	t_coord;
 
 typedef struct s_item {
-	t_coord	*item_pos;
+	t_coord	item_pos;
 	int		state;
 	int		type;
 }	t_item;

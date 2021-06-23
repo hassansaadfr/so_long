@@ -4,12 +4,11 @@ static t_list	*init_item_node(int x, int y, int type)
 {
 	t_list	*node;
 	t_item	*item;
-	t_coord	*pos;
+	t_coord	pos;
 
 	item = ft_alloc(sizeof(t_item));
-	pos = ft_alloc(sizeof(t_coord));
-	pos->x = x;
-	pos->y = y;
+	pos.x = x;
+	pos.y = y;
 	item->item_pos = pos;
 	item->type = type;
 	node = ft_lstnew(item);
