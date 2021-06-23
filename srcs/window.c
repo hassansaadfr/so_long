@@ -22,5 +22,6 @@ void	init_window(t_conf *conf)
 	conf->img.addr = mlx_get_data_addr(conf->img.img, &conf->img.bits_per_pixel,
 			&conf->img.line_length, &conf->img.endian);
 	load_all_textures(&conf);
+	mlx_hook(conf->win, 33, 1L << 17, exit_game, conf);
 	mlx_key_hook(conf->win, keypress, conf);
 }
