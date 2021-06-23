@@ -51,6 +51,7 @@ $(NAME)			:	compile ${OBJS} done
 					make -C libft
 					make -C mlx
 					@${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS} -o ${NAME} -lft ${MLX_FLAGS}
+					@make clean
 
 all				:	${NAME}
 
@@ -58,6 +59,7 @@ bonus			:	compile ${OBJS_BONUS} done
 					make -C libft
 					make -C mlx
 					@${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS_BONUS} -o ${NAME} -lft ${MLX_FLAGS}
+					@make clean
 
 val				:	${NAME}
 					valgrind \
