@@ -6,8 +6,6 @@ static void	free_item(void *ptr)
 
 	node = ptr;
 	ft_free_ptr((void **)&node->item_pos);
-	ft_free_ptr((void **)&node);
-	ft_free_ptr((void **)&ptr);
 }
 
 void	delete_item(t_conf *conf, t_coord next)

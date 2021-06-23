@@ -1,8 +1,8 @@
 #include "so_long.h"
 
-static void	write_move(t_conf *conf, char *str)
+static void	print_move(t_conf *conf, char *str)
 {
-	int		col;
+	int		color;
 	char	*move_count;
 	int		x;
 	int		y;
@@ -16,15 +16,23 @@ static void	write_move(t_conf *conf, char *str)
 		y++;
 	}
 	move_count = ft_itoa(++conf->move_count);
-	col = 0x800080;
+	color = 0x800080;
+	mlx_set_font(conf->mlx, conf->win, "-sony-*-*-*-*-*-24-*-*-*-*-*-*-*");
+	mlx_string_put(conf->mlx, conf->win, 10, 40, color, str);
+	mlx_string_put(conf->mlx, conf->win, 10, 70, color, "Move: ");
+	mlx_string_put(conf->mlx, conf->win, 80, 70, color, move_count);
+	ft_free_ptr((void **)&move_count);
+}
+
+static void	write_move(t_conf *conf, char *str)
+{
 	ft_putendl_fd(str, STDOUT_FILENO);
 	ft_putstr_fd("Move: ", STDOUT_FILENO);
-	ft_putendl_fd(move_count, STDOUT_FILENO);
-	mlx_string_put(conf->mlx, conf->win, 10, 40, col, str);
-	mlx_string_put(conf->mlx, conf->win, 10, 70, col, "Move: ");
-	mlx_string_put(conf->mlx, conf->win, 80, 70, col, move_count);
-	ft_free_ptr((void **)&move_count);
+	ft_putnbr_fd(++conf->move_count, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
 	draw_frame(conf);
+	print_move(conf, str);
+	ft_draw_img(conf, 0, 0);
 }
 
 void	move(t_conf *conf, t_coord next, char *str)

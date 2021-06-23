@@ -28,7 +28,6 @@ void	draw_frame(t_conf *conf)
 		x = 0;
 		y++;
 	}
-	ft_draw_img(conf, 0, 0);
 }
 
 void	draw_cube(t_conf *conf, int startx, int starty)
@@ -64,5 +63,6 @@ void	game(t_conf *conf)
 	conf->move_count = 0;
 	init_window(conf);
 	draw_frame(conf);
+	ft_draw_img(conf, 0, 0);
 	mlx_loop(conf->mlx);
 }
