@@ -3,6 +3,8 @@
 
 # define INVALID_ARGS "Usage : ./so_long <map.ber>."
 # define NOT_VALID_FILE "Not a valid .ber file."
+# define MAP_IS_DIRECTORY "The map is a directory."
+# define MAP_IS_SYMLINK "The map is a symlink."
 # define NOT_RECTANGULAR "The map is not rectangular."
 # define NOT_CLOSED "The map is closed."
 # define MISSING_PLAYER_POS "Can't find player position in the map."

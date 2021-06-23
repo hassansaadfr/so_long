@@ -5,19 +5,25 @@ int	open_file(char *path)
 	int		fd;
 	char	*ext;
 
-	fd = -1;
 	errno = 0;
 	ext = ft_strrchr(path, '.');
 	if (ft_strcmp(".ber", ext) != 0)
+		ft_exit_free(print_err(NOT_VALID_FILE));
+	fd = open(path, __O_DIRECTORY);
+	if (fd != -1)
 	{
-		print_err(NOT_VALID_FILE);
-		ft_exit_free(1);
+		close(fd);
+		ft_exit_free(print_err(MAP_IS_DIRECTORY));
 	}
-	fd = open(path, O_RDONLY);
+	errno = 0;
+	fd = open(path, O_RDONLY | O_NOFOLLOW);
 	if (errno != 0 || fd == -1)
 	{
-		print_err(strerror(errno));
-		ft_exit_free(1);
+		if (errno == 40)
+			print_err(MAP_IS_SYMLINK);
+		else
+			print_err(strerror(errno));
+		ft_exit_free(errno);
 	}
 	return (fd);
 }
