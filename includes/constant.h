@@ -14,12 +14,6 @@
 
 # define CANT_EXIT "Cant exit because you dont collect all collectibles"
 
-# define AVAILABLE 0
-# define EATEN 1
-
-# define COLLECTIBLE 0
-# define EXIT_GATE 0
-
 # define ESCAPE 65307
 # define UP 65362
 # define DOWN 65364

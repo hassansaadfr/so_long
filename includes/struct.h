@@ -8,8 +8,6 @@ typedef struct s_coord {
 
 typedef struct s_item {
 	t_coord	item_pos;
-	int		state;
-	int		type;
 }	t_item;
 
 typedef struct s_keys {

@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static t_list	*init_item_node(int x, int y, int type)
+static t_list	*init_item_node(int x, int y)
 {
 	t_list	*node;
 	t_item	*item;
@@ -10,7 +10,6 @@ static t_list	*init_item_node(int x, int y, int type)
 	pos.x = x;
 	pos.y = y;
 	item->item_pos = pos;
-	item->type = type;
 	node = ft_lstnew(item);
 	return (node);
 }
@@ -57,10 +56,10 @@ void	get_items_pos(t_conf *conf)
 		{
 			if (conf->map[y][x] == 'C')
 				ft_lstadd_back(&conf->item_list,
-					init_item_node(x, y, COLLECTIBLE));
+					init_item_node(x, y));
 			else if (conf->map[y][x] == 'E')
 				ft_lstadd_back(&conf->exit_list,
-					init_item_node(x, y, EXIT_GATE));
+					init_item_node(x, y));
 			x++;
 		}
 		x = 0;
