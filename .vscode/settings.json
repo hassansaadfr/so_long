@@ -3,7 +3,7 @@
 		"*.c": "c",
 		"*.ts": "typescript",
 		"so_long.h": "c",
-		"struct.h": "c",
-		"constant.h": "c"
+		"constant.h": "c",
+		"struct.h": "c"
 	}
 }
