@@ -14,8 +14,6 @@
 
 # define CANT_EXIT "Cant exit because you dont collect all collectibles"
 
-# define FONT "-sony-*-*-*-*-*-24-*-*-*-*-*-*-*"
-
 # define AVAILABLE 0
 # define EATEN 1
 

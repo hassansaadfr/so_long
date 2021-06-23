@@ -81,8 +81,6 @@ int		is_valid_position(t_conf *conf, t_coord next);
 /*
 ** FILE - move_player.c
 */
-void	move_north(t_conf *conf);
-void	move_south(t_conf *conf);
-void	move_side(t_conf *conf, int side);
+void	move_player(t_conf *conf, int side);
 
 #endif

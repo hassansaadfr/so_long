@@ -8,10 +8,10 @@ static void	write_move(t_conf *conf, char *str)
 	int		y;
 
 	y = 10;
-	while (y < 75)
+	while (y < 75 && y < conf->screen_res.y)
 	{
 		x = 0;
-		while (x < 140)
+		while (x < 140 && x < conf->screen_res.x)
 			my_mlx_pixel_put(&conf->img, x++, y, 0xFFFFFF);
 		y++;
 	}
@@ -20,7 +20,6 @@ static void	write_move(t_conf *conf, char *str)
 	ft_putendl_fd(str, STDOUT_FILENO);
 	ft_putstr_fd("Move: ", STDOUT_FILENO);
 	ft_putendl_fd(move_count, STDOUT_FILENO);
-	mlx_set_font(conf->mlx, conf->win, FONT);
 	mlx_string_put(conf->mlx, conf->win, 10, 40, col, str);
 	mlx_string_put(conf->mlx, conf->win, 10, 70, col, "Move: ");
 	mlx_string_put(conf->mlx, conf->win, 80, 70, col, move_count);
@@ -57,35 +56,29 @@ void	move(t_conf *conf, t_coord next, char *str)
 	}
 }
 
-void	move_north(t_conf *conf)
+void	move_player(t_conf *conf, int side)
 {
 	t_coord	pos;
 
-	pos.x = conf->player_pos->x;
-	pos.y = conf->player_pos->y - 1;
-	move(conf, pos, "Move north");
-}
-
-void	move_south(t_conf *conf)
-{
-	t_coord	pos;
-
-	pos.x = conf->player_pos->x;
-	pos.y = conf->player_pos->y + 1;
-	move(conf, pos, "Move south");
-}
-
-void	move_side(t_conf *conf, int side)
-{
-	t_coord	pos;
-
-	if (side == LEFT)
+	pos = (t_coord){.x = conf->player_pos->x, .y = conf->player_pos->y};
+	if (side == LEFT || side == D)
+	{
 		pos.x = conf->player_pos->x - 1;
-	else
-		pos.x = conf->player_pos->x + 1;
-	pos.y = conf->player_pos->y;
-	if (side == LEFT)
 		move(conf, pos, "Move left");
-	else
+	}
+	else if (side == RIGHT || side == A)
+	{
+		pos.x = conf->player_pos->x + 1;
 		move(conf, pos, "Move right");
+	}
+	else if (side == UP || side == W)
+	{
+		pos.y = conf->player_pos->y - 1;
+		move(conf, pos, "Move up");
+	}
+	else if (side == DOWN || side == S)
+	{
+		pos.y = conf->player_pos->y + 1;
+		move(conf, pos, "Move down");
+	}
 }
