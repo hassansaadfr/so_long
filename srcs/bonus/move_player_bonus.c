@@ -15,9 +15,8 @@ static void	print_move(t_conf *conf, char *str)
 			my_mlx_pixel_put(&conf->img, x++, y, 0xFFFFFF);
 		y++;
 	}
-	move_count = ft_itoa(++conf->move_count);
+	move_count = ft_itoa(conf->move_count);
 	color = 0x800080;
-	mlx_set_font(conf->mlx, conf->win, "-sony-*-*-*-*-*-24-*-*-*-*-*-*-*");
 	mlx_string_put(conf->mlx, conf->win, 10, 40, color, str);
 	mlx_string_put(conf->mlx, conf->win, 10, 70, color, "Move: ");
 	mlx_string_put(conf->mlx, conf->win, 80, 70, color, move_count);
@@ -31,8 +30,8 @@ static void	write_move(t_conf *conf, char *str)
 	ft_putnbr_fd(++conf->move_count, STDOUT_FILENO);
 	ft_putchar_fd('\n', STDOUT_FILENO);
 	draw_frame(conf);
-	print_move(conf, str);
 	ft_draw_img(conf, 0, 0);
+	print_move(conf, str);
 }
 
 void	move(t_conf *conf, t_coord next, char *str)
