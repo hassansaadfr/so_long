@@ -25,13 +25,14 @@ static void	print_move(t_conf *conf, char *str)
 
 static void	write_move(t_conf *conf, char *str)
 {
-	ft_putendl_fd(str, STDOUT_FILENO);
-	ft_putstr_fd("Move: ", STDOUT_FILENO);
+	ft_putstr_fd("                                ", STDOUT_FILENO);
+	ft_putstr_fd("\r", STDOUT_FILENO);
+	ft_putstr_fd(str, STDOUT_FILENO);
+	ft_putstr_fd(", count: ", STDOUT_FILENO);
 	ft_putnbr_fd(++conf->move_count, STDOUT_FILENO);
-	ft_putchar_fd('\n', STDOUT_FILENO);
+	ft_putstr_fd("\r", STDOUT_FILENO);
 	draw_frame(conf);
 	ft_draw_img(conf, 0, 0);
-	print_move(conf, str);
 }
 
 void	move(t_conf *conf, t_coord next, char *str)
