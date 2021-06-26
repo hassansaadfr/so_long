@@ -64,6 +64,4 @@ void	is_correct_map(char **map)
 			ft_exit_free(print_err(NOT_RECTANGULAR));
 		i++;
 	}
-	if (line_width == map_size)
-		ft_exit_free(print_err(NOT_RECTANGULAR));
 }
