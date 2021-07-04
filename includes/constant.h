@@ -6,7 +6,7 @@
 # define MAP_IS_DIRECTORY "The map is a directory."
 # define MAP_IS_SYMLINK "The map is a symlink."
 # define NOT_RECTANGULAR "The map is not rectangular."
-# define NOT_CLOSED "The map is closed."
+# define NOT_CLOSED "The map is not closed."
 # define MISSING_PLAYER_POS "Can't find player position in the map."
 # define MULTIPLE_PLAYER_POS "Found multiple player position in the map."
 # define INVALID_CHARACTER "Map contain invalid character."
