@@ -44,20 +44,19 @@ CC				=	clang
 CFLAGS			=	-Wall -Werror -Wextra -g #-fsanitize=address
 
 .c.o			:
-					@${CC} ${CFLAGS} ${HEAD} -c $< -o ${<:.c=.o}
-					printf "$(GREEN)█"
+					${CC} ${CFLAGS} ${HEAD} -c $< -o ${<:.c=.o}
 
-$(NAME)			:	compile ${OBJS} done
+$(NAME)			:	${OBJS}
 					make -C libft
 					make -C mlx
-					@${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS} -o ${NAME} -lft ${MLX_FLAGS}
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS} -o ${NAME} -lft ${MLX_FLAGS}
 
 all				:	${NAME}
 
-bonus			:	compile ${OBJS_BONUS} done
+bonus			:	${OBJS_BONUS}
 					make -C libft
 					make -C mlx
-					@${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS_BONUS} -o ${NAME} -lft ${MLX_FLAGS}
+					${CC} ${CFLAGS} ${LD_FLAGS} ${OBJS_BONUS} -o ${NAME} -lft ${MLX_FLAGS}
 
 val				:	${NAME}
 					valgrind \
@@ -79,15 +78,3 @@ fclean			:	clean
 re				:	fclean all
 
 .PHONY			:	all clean fclean re
-
-.SILENT:
-
-BLUE	= \033[1;34m
-GREEN	= \033[1;32m
-YELLOW	= \033[1;33m
-DEFAULT = \033[0m
-
-compile	:
-			echo "\n$(YELLOW)[X] Compiling $(BLUE)So_long$(DEFAULT)\n"
-done	:
-			echo "$(GREEN) => 100%$(DEFAULT)\n"

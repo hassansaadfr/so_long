@@ -7,7 +7,7 @@ int	open_file(char *path)
 
 	errno = 0;
 	ext = ft_strrchr(path, '.');
-	if (ft_strcmp(".ber", ext) != 0)
+	if (ext == NULL || ft_strcmp(".ber", ext) != 0)
 		ft_exit_free(print_err(NOT_VALID_FILE));
 	fd = open(path, __O_DIRECTORY);
 	if (fd != -1)
