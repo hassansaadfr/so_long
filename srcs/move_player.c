@@ -21,6 +21,7 @@ void	move(t_conf *conf, t_coord next, char *str)
 			if (ft_lstsize(conf->item_list) == 0)
 			{
 				write_move(conf, str);
+				ft_putstr_fd("                            \r", STDOUT_FILENO);
 				ft_putstr_fd("You win\n", STDOUT_FILENO);
 				exit_game(conf);
 			}

@@ -15,6 +15,12 @@ static void	load_all_textures(t_conf **conf)
 	load_texture(*conf, &(*conf)->door, "textures/door.xpm");
 }
 
+static int	redraw(t_conf *conf)
+{
+	ft_draw_img(conf, 0, 0);
+	return (1);
+}
+
 void	init_window(t_conf *conf)
 {
 	conf->mlx = mlx_init();
@@ -23,5 +29,6 @@ void	init_window(t_conf *conf)
 			&conf->img.line_length, &conf->img.endian);
 	load_all_textures(&conf);
 	mlx_hook(conf->win, 33, 1L << 17, exit_game, conf);
+	mlx_loop_hook(conf->mlx, redraw, conf);
 	mlx_key_hook(conf->win, keypress, conf);
 }

@@ -33,6 +33,7 @@ static void	write_move(t_conf *conf, char *str)
 	ft_putstr_fd("\r", STDOUT_FILENO);
 	draw_frame(conf);
 	ft_draw_img(conf, 0, 0);
+	print_move(conf, str);
 }
 
 void	move(t_conf *conf, t_coord next, char *str)
@@ -44,6 +45,7 @@ void	move(t_conf *conf, t_coord next, char *str)
 			if (ft_lstsize(conf->item_list) == 0)
 			{
 				write_move(conf, str);
+				ft_putstr_fd("                            \r", STDOUT_FILENO);
 				ft_putstr_fd("You win\n", STDOUT_FILENO);
 				exit_game(conf);
 			}
